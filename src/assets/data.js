@@ -98,7 +98,7 @@ const products = [
   export const getProductsByCategory = (categoryId) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(products.filter(product => product.categoryId === categoryId))
+        resolve(products.filter(product => product.categoryId.toLowerCase() === categoryId))
       }, 600)
     })
   }

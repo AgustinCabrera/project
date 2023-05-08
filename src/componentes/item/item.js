@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import React from 'react'
 
-import './item.css'
+import './Item.css'
 
 const Item = ({id, name, price,img,detail}) => {
     return (

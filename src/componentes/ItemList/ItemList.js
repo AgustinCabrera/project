@@ -1,9 +1,10 @@
-import Item from './item/item'
+import Item from '../item/Item'
 
 export const ItemList = ({ products }) => {
   return (
     <div className="item-list">
-      {products.map(prod => <Item key={prod.id} {...prod} />)}
+      {products.map(prod => <Item id={prod.id} name={prod.name} price={prod.price}
+      stock={prod.stock} img={prod.img} detail={prod.detail} categoryId={prod.categoryId} />)}
     </div>
   )
 }
