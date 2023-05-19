@@ -10,13 +10,17 @@ export const ItemDetail = ( props ) => {
 
     const {addItem} = useContext(CartContext) 
     
-    const handleOnAdd = (count) =>{
-        setCountAdded(count)
+    const handleOnAdd = (quantity) =>{
+        setCountAdded(quantity)
         
-        //const item = {
-        //    {props.id} {props.name}  {props.price}
-        // }
-        //addItem(item,count)
+        const item = {
+            id: props.id,
+            name: props.name,
+            price: props.price,
+            img: props.img,
+            quantity: quantity
+        }
+        addItem(item,quantity)
     }
 
 return (
@@ -34,7 +38,7 @@ return (
             countAdded > 0 ? (
                 <Link to = '/cart' className ='option'>Finish buying</Link>
             ):(
-                <ItemCount stock={props.stock} initial={1} onAdd={(count) => console.log('Products added: ',count)}/>
+                <ItemCount stock={props.stock} initial={1} onAdd={handleOnAdd}/>
             )
         }
             <p className="card-text-stock">{props.stock} left in stock</p>

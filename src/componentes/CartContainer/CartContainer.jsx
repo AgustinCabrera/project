@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../../assets/context/CartContext'
 
-export const CartContainer = () => {
+
+const CartContainer = () => {
 
     const [loader,setLoader] = useState(true)
-    const [isGenerated,idOrder] = useContext(OrderGeneratedContext);
-      
+    
       useEffect(() => {
         setTimeout(() => {
           setLoader(false)
@@ -13,18 +13,8 @@ export const CartContainer = () => {
         
       },[loader]);
 
-    return loader ? (
-        <LoadScreen />
-    ) : isGenerated ? (
-      <PurchaseScreen idOrder={idOrder} />
-    ):(
-      <section>
-        <div>
-          <Total />
-          <ButtonD />
-          <ItemOnCart />
-        </div>
-        <Purchase />
-      </section>
+    return (
+      {}
     )
-  }
+}
+export default CartContainer

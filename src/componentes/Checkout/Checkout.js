@@ -79,7 +79,6 @@ import CheckoutForm from './CheckoutForm'
         return <h1>The id of your order is: {orderId}</h1>
     }
 
-   
     return(
         <CheckoutForm onConfirm={createOrder} />
     )

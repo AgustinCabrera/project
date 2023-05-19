@@ -32,9 +32,9 @@ export const ItemDetailContainer = () => {
 
   },[itemId])
   
-// TO DO: CONFIGURAR EL RETURN 
   return (
     <div className='itemDetailContainer'>
+      {loading && <p>Loading...</p>}
         <ItemDetail {...product}   />
     </div>
   )
