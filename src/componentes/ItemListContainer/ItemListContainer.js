@@ -1,28 +1,39 @@
 import  { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getProductsByCategory, getProducts } from '../../assets/data'
 import  ItemList  from '../ItemList/ItemList'
+import {getDocs,collection,query,where} from 'firebase/firestore'
+import {db} from '../../services/firebase/firebaseConfig'
 
 const ItemListContainer = ({ greeting }) => {
 
   const [products, setProducts] = useState([])
-
+  const [loading,setLoading] = useState(true)
   const {categoryId} = useParams()
 
   useEffect(() => {
-    const asynFunc = categoryId ? getProductsByCategory : getProducts
+    setLoading(true)
 
-    asynFunc(categoryId)
+    const collectionRef = categoryId 
+        ? query(collection(db,'items'),where('categoryId','==',categoryId))
+        : collection(db,'items')
+
+    getDocs(collectionRef)
       .then(response => {
-        setProducts(response)
+        const productsAdapted = response.docs.map(doc => {
+            const data = doc.data()
+            return {id: doc.id,...data}
         })
-
-     .catch (error => {
-       console.log(error)
-     })  
+        setProducts(productsAdapted)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
     },[categoryId])
-
-
+    
+// TO DO: CONFIGURAR EL RETURN 
   return (
     <div className='itemListContainer'>
       <p className='greeting'>{greeting}</p>
