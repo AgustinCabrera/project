@@ -3,7 +3,7 @@ import React from 'react'
 
 import './Item.css'
 
-const Item = ({id, name, price,img,detail}) => {
+const Item = ({id, name, price ,img,detail}) => {
     return (
         <article className="card">
             <header className="card-header">

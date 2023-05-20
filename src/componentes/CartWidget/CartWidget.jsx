@@ -7,7 +7,7 @@ export const CartWidget = () => {
     const {totalQuantity} = useContext(CartContext)
 
   return (
-    <Link to = '/cart' className ='CarWidget' style = {{display:totalQuantity > 0 ? 'block' : 'none'}} >
+    <Link to = '/cart' className ='CarWidget' >
         <div class="icon-container">
            <svg xmlns="http://www.w3.org/2000/svg" 
            width="32" 

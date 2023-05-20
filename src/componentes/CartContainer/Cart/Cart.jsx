@@ -6,9 +6,12 @@ import { CartItem } from '../CartItem/CartItem'
 import './Cart.css'
 
 export const Cart = () => {
-    const {cart, clearCart,totalQuantity,total} = useContext(CartContext)
+    const {cart, clearCart,totalQuantity, calculateTotalPrice} = useContext(CartContext)
 
-    if(totalQuantity === 0){
+    const totalPrice = calculateTotalPrice(cart);
+
+
+    if(cart.length === 0){
         return(
             <div className='cart-container'>
                 <h2 className='cart-title'>Your cart is empty</h2>
@@ -20,16 +23,18 @@ export const Cart = () => {
   return (
     <div>
         <h2 className='cart-title'>Your cart</h2>
-            <div className='cart-container'>
-                <div className='cart-items'>
+            <div className='cart-style'>
+                <div className='cart-items-style horizontal-cart'>
                 {
                     cart.map(item => (
                         <CartItem key={item.id} {...item}/>)
                     )
                 }
-                <h3>Total: ${total}</h3>
-                <button className='button-container' onClick={clearCart}>Clear cart</button>
-                <Link to = '/checkout' className ='option'>Finish buying</Link>
+                <h3 className='cart-title'>Total: ${totalPrice}</h3>
+                
+                
+                <button className='option' onClick={clearCart}>Clear cart</button>
+                <Link to = '/checkout' className ='option' style={{ textDecoration: 'none' }} >Checkout </Link>
                 </div>
         </div>
 

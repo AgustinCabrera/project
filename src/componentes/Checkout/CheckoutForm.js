@@ -19,16 +19,27 @@ const CheckoutForm = ({onConfirm}) => {
             <form onSubmit={handleConfirm} className='form'>
                 <label className='Label'>
                     Name:
-                <input className='input'type='text'value={name} onChange={(event) => setName(event.target.value)}/>
+                <input className='input'
+                type='text'
+                value={name}
+                 onChange={({target}) => setName(target.value)}/>
                 </label>
+
                 <label className='Label'>
                     Phone:
-                <input className='input'type='text'value={phone} onChange={(event) => setPhone(event.target.value)}/>
+                <input className='input'
+                type='text'
+                value={phone}
+                 onChange={({target}) => setPhone(target.value)}/>
                 </label>
+
                 <label className='Label'>
                     Email:
-                <input className='input'type='text'value={email} onChange={(event) => setEmail(event.target.value)}/>
+                <input className='input'
+                type='text'
+                value={email} onChange={({target}) => setEmail(target.value)}/>
                 </label>
+                
                 <button className='button' type='submit'>Confirm</button>
             </form>
         </div>

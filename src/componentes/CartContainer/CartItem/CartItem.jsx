@@ -5,7 +5,7 @@ import Item from '../../item/Item';
 
 export const CartItem = () => {
 
-    const [cart] = useContext(CartContext);
+    const {cart} = useContext(CartContext);
 
   return (
         <div className='cartItemList'>

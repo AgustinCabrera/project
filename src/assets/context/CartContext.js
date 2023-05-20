@@ -1,7 +1,9 @@
 import { createContext, useState } from "react";
 import { CartItem } from "../../componentes/CartContainer/CartContainer";
+import { Link } from "react-router-dom";
 export const CartContext = createContext({
-    cart:[]
+    cart:[],
+    total:0,
 })
 export const CartProvider = ({ children }) => {
 
@@ -12,9 +14,13 @@ export const CartProvider = ({ children }) => {
         if(!isInCart(item.id)) {
             setCart(prev => [...prev,{...item,count}])
         } else {
-            console.error('Product added before')
-        }
+            const updatedCart = cart.map((prod) =>
+              prod.id === item.id ? { ...prod, count: prod.count + count } : prod
+            );
+            setCart(updatedCart);
+          }
     }
+
     const removeItem = (itemId) => {
         const cartUpdated  = cart.filter(prod => prod.id !== itemId)
         setCart(cartUpdated)
@@ -28,14 +34,15 @@ export const CartProvider = ({ children }) => {
         return cart.some(prod => prod.id === itemId)
     }
 
-    const totalPrice = () => {
+     const calculateTotalPrice = (cart) => {
         return cart
         .reduce((acc,prod) => acc + prod.price * prod.count,0)
         .toFixed(2);
     }
 
+    const total = calculateTotalPrice(cart);
     return (
-        <CartContext.Provider value = {[cart,setCart,addItem,removeItem,clearCart,totalPrice]}>
+        <CartContext.Provider value = {{cart,setCart,addItem,removeItem,clearCart,calculateTotalPrice,total}}>
             {children}
         </CartContext.Provider>
 
