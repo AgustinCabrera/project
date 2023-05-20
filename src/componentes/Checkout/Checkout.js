@@ -77,15 +77,14 @@ import CheckoutForm from './CheckoutForm'
     }
     if(orderId){
         return <h1>The id of your order is: {orderId}</h1>
+        }
     }
-
     return(
         <div>
-            <h1>Checkout</h1>
-        <CheckoutForm onConfirm={createOrder} />
+           <h1>Checkout</h1>
+              <CheckoutForm createOrder={createOrder}/>
         </div>
     )
-    }
 }
 export default Checkout
 

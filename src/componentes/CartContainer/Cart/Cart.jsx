@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { CartItem } from '../CartItem/CartItem'
 import './Cart.css'
 
+
 export const Cart = () => {
     const {cart, clearCart,totalQuantity, calculateTotalPrice} = useContext(CartContext)
 
@@ -25,14 +26,8 @@ export const Cart = () => {
         <h2 className='cart-title'>Your cart</h2>
             <div className='cart-style'>
                 <div className='cart-items-style horizontal-cart'>
-                {
-                    cart.map(item => (
-                        <CartItem key={item.id} {...item}/>)
-                    )
-                }
+                <CartItem />
                 <h3 className='cart-title'>Total: ${totalPrice}</h3>
-                
-                
                 <button className='option' onClick={clearCart}>Clear cart</button>
                 <Link to = '/checkout' className ='option' style={{ textDecoration: 'none' }} >Checkout </Link>
                 </div>
