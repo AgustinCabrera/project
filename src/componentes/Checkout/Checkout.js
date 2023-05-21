@@ -3,6 +3,8 @@ import { CartContext } from '../../assets/context/CartContext'
 import { Timestamp, writeBatch, collection, query, where, getDocs, documentId,addDoc } from '@firebase/firestore'
 import {db} from '../../services/firebase/firebaseConfig'
 import CheckoutForm from './CheckoutForm'
+import './CheckoutForm.css'
+import './Checkout.css'
 
 
  const Checkout = () => {
@@ -11,13 +13,13 @@ import CheckoutForm from './CheckoutForm'
 
     const {cart,total,clearCart} = useContext(CartContext)
 
-    const createOrder = async ({name,phone,email}) =>{
+    const createOrder = async ({name,phone,surname,email}) =>{
         setLoading(true)
 
         try{
             const objOrder = {
                 buyer:{
-                    name,phone,email
+                    name,surname,phone,email
                 },
                 items:cart,
                 total:total,
@@ -72,17 +74,16 @@ import CheckoutForm from './CheckoutForm'
     } finally {
         setLoading(false)
     }
-    if(loading){
-        return <h1> Your order is being generated...</h1>
-    }
-    if(orderId){
-        return <h1>The id of your order is: {orderId}</h1>
-        }
+    
     }
     return(
         <div>
-           <h1>Checkout</h1>
-              <CheckoutForm createOrder={createOrder}/>
+           <h1 className='title'>Checkout</h1>
+           {orderId ? (
+        <h2>The ID of your order is: {orderId}</h2>
+      ) : (
+        <CheckoutForm createOrder={createOrder} setOrderId={setOrderId} />
+      )}
         </div>
     )
 }

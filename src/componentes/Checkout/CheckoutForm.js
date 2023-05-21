@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import Checkout from './Checkout'
 
-const CheckoutForm = ({onConfirm}) => {
+const CheckoutForm = ({createOrder}) => {
     const [name,setName] = useState('')
+    const [surname,setSurname] = useState('')
     const [phone,setPhone] = useState ('')
     const [email,setEmail] = useState('')
 
@@ -10,9 +12,12 @@ const CheckoutForm = ({onConfirm}) => {
         event.preventDefault()
 
         const userData = {
-            name, phone,email
+            name,
+            surname,
+            phone,
+            email
         }
-        onConfirm(userData) 
+        createOrder(userData) 
     }
     return (
         <div className='container'>
@@ -23,6 +28,14 @@ const CheckoutForm = ({onConfirm}) => {
                 type='text'
                 value={name}
                  onChange={({target}) => setName(target.value)}/>
+                </label>
+
+                <label className='Label'>
+                    Surname:
+                <input className='input'
+                type='text'
+                value={surname}
+                 onChange={({target}) => setSurname(target.value)}/>
                 </label>
 
                 <label className='Label'>

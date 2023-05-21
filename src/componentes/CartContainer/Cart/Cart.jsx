@@ -26,7 +26,9 @@ export const Cart = () => {
         <h2 className='cart-title'>Your cart</h2>
             <div className='cart-style'>
                 <div className='cart-items-style horizontal-cart'>
-                <CartItem />
+                <div className='cartItemList'>
+                  <CartItem />
+                </div>
                 <h3 className='cart-title'>Total: ${totalPrice}</h3>
                 <button className='option' onClick={clearCart}>Clear cart</button>
                 <Link to = '/checkout' className ='option' style={{ textDecoration: 'none' }} >Checkout </Link>
