@@ -4,6 +4,7 @@ import './ItemDetailContainer.css'
 import { ItemDetail } from '../ItemDetail/ItemDetail' 
 import {getDoc,doc} from 'firebase/firestore'
 import {db} from '../../services/firebase/firebaseConfig'
+import { Loader } from "../Loader/Loader"
 
 export const ItemDetailContainer = () => {
 
@@ -34,7 +35,7 @@ export const ItemDetailContainer = () => {
   
   return (
     <div className='itemDetailContainer'>
-      {loading && <p>Loading...</p>}
+        <Loader loading={loading} />
         <ItemDetail {...product}   />
     </div>
   )

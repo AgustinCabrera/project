@@ -30,7 +30,7 @@ export const Cart = () => {
                   <CartItem />
                 </div>
                 <h3 className='cart-title'>Total: ${totalPrice}</h3>
-                <button className='option' onClick={clearCart}>Clear cart</button>
+                <button className='button-cart' onClick={clearCart}>Clear cart</button>
                 <Link to = '/checkout' className ='option' style={{ textDecoration: 'none' }} >Checkout </Link>
                 </div>
         </div>

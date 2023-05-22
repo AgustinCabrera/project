@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Checkout from './Checkout'
+
 
 const CheckoutForm = ({createOrder}) => {
     const [name,setName] = useState('')
@@ -19,38 +19,72 @@ const CheckoutForm = ({createOrder}) => {
         }
         createOrder(userData) 
     }
+
+    const handleNameChange = (event) => {
+        const regex = /^[A-Za-z\s]+$/;
+        if (regex.test(event.target.value) || event.target.value === '') {
+          setName(event.target.value);
+        }
+      };
+
+      const handleSurnameChange = (event) => {
+        const regex = /^[A-Za-z\s]+$/;
+        if (regex.test(event.target.value) || event.target.value === '') {
+          setSurname(event.target.value);
+        }
+      };
+
+
+    const handlePhoneChange = (event) => {
+        const regex = /^[0-9]+$/;
+        if (regex.test(event.target.value) || event.target.value === '') {
+          setPhone(event.target.value);
+    }
+      };
+
+      // no funciona validacion de email
+      const handleEmailChange = (event) => {
+        const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        if (regex.test(event.target.value) && event.target.value !== '') {
+          setEmail(event.target.value);
+        }
+      };
+    
+    
+
     return (
         <div className='container'>
             <form onSubmit={handleConfirm} className='form'>
-                <label className='Label'>
+                <label className='label'>
                     Name:
-                <input className='input'
+                <input className='input' placeholder='Enter your name'
                 type='text'
                 value={name}
-                 onChange={({target}) => setName(target.value)}/>
+                 onChange={handleNameChange}/>
                 </label>
 
-                <label className='Label'>
+                <label className='label'>
                     Surname:
-                <input className='input'
+                <input className='input' placeholder='Enter your surname'
                 type='text'
                 value={surname}
-                 onChange={({target}) => setSurname(target.value)}/>
+                 onChange={handleSurnameChange}/>
                 </label>
 
-                <label className='Label'>
+                <label className='label'>
                     Phone:
-                <input className='input'
+                <input className='input'placeholder='Enter your phone number'
                 type='text'
                 value={phone}
-                 onChange={({target}) => setPhone(target.value)}/>
+                 onChange={handlePhoneChange}/>
                 </label>
 
-                <label className='Label'>
+                <label className='label' >
                     Email:
-                <input className='input'
+                <input className='input' placeholder='Enter your e-mail adress'
                 type='text'
-                value={email} onChange={({target}) => setEmail(target.value)}/>
+                value={email}
+                 onChange={({target}) => setEmail(target.value)}/>
                 </label>
                 
                 <button className='button' type='submit'>Confirm</button>

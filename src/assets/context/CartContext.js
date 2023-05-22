@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-import { CartItem } from "../../componentes/CartContainer/CartContainer";
-import { Link } from "react-router-dom";
 export const CartContext = createContext({
     cart:[],
     total:0,
@@ -33,16 +31,20 @@ export const CartProvider = ({ children }) => {
     const isInCart = (itemId) => {
         return cart.some(prod => prod.id === itemId)
     }
+    const totalQuantity = () => {
+        return cart.reduce((acc, prod) => (acc += prod.quantity), 0);
+      };
+    
 
      const calculateTotalPrice = (cart) => {
         return cart
         .reduce((acc,prod) => acc + prod.price * prod.count,0)
-        .toFixed(2);
+        
     }
 
     const total = calculateTotalPrice(cart);
     return (
-        <CartContext.Provider value = {{cart,setCart,addItem,removeItem,clearCart,calculateTotalPrice,total}}>
+        <CartContext.Provider value = {{cart,setCart,addItem,removeItem,totalQuantity,clearCart,calculateTotalPrice,total}}>
             {children}
         </CartContext.Provider>
 

@@ -6,9 +6,7 @@
 }
 
 .option {
-    display: inline-block;
-    justify-content:baseline;
-    align-items:baseline;
+    
     padding: 0.5rem 1rem;
     background-color: rgb(3, 35, 88);
     color: #fff;
@@ -17,10 +15,26 @@
     margin: 0 0.5rem;
     border-radius: 0.5rem;
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    
   }
   
-  .horizontal-cart {
-    flex-direction: row;
+  .button-cart{
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(3, 35, 88);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
   
   .cart-items-style {

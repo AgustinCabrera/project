@@ -41,6 +41,7 @@ return (
                 <ItemCount stock={props.stock} initial={1} onAdd={handleOnAdd}/>
             )
         }
+            <Link to= '/' className ='option'>keep buying </Link>
             <p className="card-text-stock">{props.stock} left in stock</p>
         </footer>
     </article>

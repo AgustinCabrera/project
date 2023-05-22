@@ -9,7 +9,10 @@
   }
   
   .Label {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: medium;
+    font-style: italic;
+    margin-top: 10px;
   }
   
   .input {
@@ -17,19 +20,21 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-top: 5px;
   }
   
   .button {
-    background-color: #007bff;
+    background-color:rgb(3, 35, 88);
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 1rem;
   }
   
   .button:hover {
-    background-color: #0056b3;
+    background-color: #0251a5;
   }
   
   .button:disabled {

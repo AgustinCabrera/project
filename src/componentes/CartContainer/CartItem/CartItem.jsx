@@ -3,8 +3,6 @@ import { CartContext } from '../../../assets/context/CartContext'
 import Item from '../../item/Item';
 import { ItemCount } from '../../ItemCount/ItemCount';
 
-
-
 export const CartItem = () => {
     const {cart} = useContext(CartContext);
 return(

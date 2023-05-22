@@ -80,9 +80,9 @@ import './Checkout.css'
         <div>
            <h1 className='title'>Checkout</h1>
            {orderId ? (
-        <h2>The ID of your order is: {orderId}</h2>
-      ) : (
-        <CheckoutForm createOrder={createOrder} setOrderId={setOrderId} />
+            <h2>The ID of your order is: {orderId}</h2>
+        ) : (
+            <CheckoutForm createOrder={createOrder} setOrderId={setOrderId} />
       )}
         </div>
     )
