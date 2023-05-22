@@ -15,7 +15,7 @@ return(
                 <h5 className='card-cart-title'>{item.name}</h5>
                 <p className='card-cart-text'>Price: ${item.price}</p>
                 <p className='card-cart-text'>Quantity: {item.quantity}</p>
-                <button className='button-cart' onClick={removeItem}> <Trash /></button>
+                <button className='button-cart' onClick={() => removeItem(item.id)}> <Trash /></button>
             </div>
         
     </div>

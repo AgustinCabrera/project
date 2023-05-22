@@ -16,7 +16,7 @@ export const Cart = () => {
         return(
             <div className='cart-container'>
                 <h2 className='cart-title'>Your cart is empty</h2>
-                <Link to = '/' className ='option'>Go to home</Link>
+                <Link to = '/' className ='button-home'>Go to home</Link>
             </div>
         )
     }
@@ -34,9 +34,11 @@ export const Cart = () => {
                   }
                 </div>
                 <h3 className='cart-title'>Total: ${totalPrice}</h3>
-                <button className='button-cart' onClick={clearCart}>Clear cart</button>
-                <Link to = '/checkout' className ='option' style={{ textDecoration: 'none' }} >Checkout </Link>
                 </div>
+        </div>
+        <div className='buttons-styles'>
+            <button className='button-cart' onClick={ clearCart}>Clear cart</button>
+            <Link to = '/checkout' className ='button-cart' style={{ textDecoration: 'none' }} >Checkout </Link>
         </div>
 
     </div>
