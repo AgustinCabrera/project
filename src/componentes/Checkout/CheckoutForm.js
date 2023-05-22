@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import './CheckoutForm.css'
+
+
 
 
 const CheckoutForm = ({createOrder}) => {
@@ -6,10 +9,17 @@ const CheckoutForm = ({createOrder}) => {
     const [surname,setSurname] = useState('')
     const [phone,setPhone] = useState ('')
     const [email,setEmail] = useState('')
+    const [confirmEmail,setConfirmEmail] = useState('')
+    const [error,setError] = useState('');
 
     const handleConfirm = (event) => { 
 
         event.preventDefault()
+
+        if(email !== confirmEmail) {
+            setError('Emails do not match, verify your email adress');
+            return;
+        }
 
         const userData = {
             name,
@@ -42,16 +52,7 @@ const CheckoutForm = ({createOrder}) => {
     }
       };
 
-      // no funciona validacion de email
-      const handleEmailChange = (event) => {
-        const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-        if (regex.test(event.target.value) && event.target.value !== '') {
-          setEmail(event.target.value);
-        }
-      };
-    
-    
-
+  
     return (
         <div className='container'>
             <form onSubmit={handleConfirm} className='form'>
@@ -60,7 +61,9 @@ const CheckoutForm = ({createOrder}) => {
                 <input className='input' placeholder='Enter your name'
                 type='text'
                 value={name}
-                 onChange={handleNameChange}/>
+                 onChange={handleNameChange}
+                 required
+                 />
                 </label>
 
                 <label className='label'>
@@ -68,24 +71,41 @@ const CheckoutForm = ({createOrder}) => {
                 <input className='input' placeholder='Enter your surname'
                 type='text'
                 value={surname}
-                 onChange={handleSurnameChange}/>
+                 onChange={handleSurnameChange}
+                 required
+                 />
                 </label>
 
                 <label className='label'>
                     Phone:
                 <input className='input'placeholder='Enter your phone number'
-                type='text'
+                type='number'
                 value={phone}
-                 onChange={handlePhoneChange}/>
+                 onChange={handlePhoneChange}
+                 required
+                 />
                 </label>
 
                 <label className='label' >
                     Email:
                 <input className='input' placeholder='Enter your e-mail adress'
-                type='text'
+                type='email'
                 value={email}
-                 onChange={({target}) => setEmail(target.value)}/>
+                 onChange={({target}) => setEmail(target.value)}
+                 required
+                 />
                 </label>
+
+                <label className='label'>
+                    Confirmar Email:
+                    <input  className='input' placeholder='Confirm your e-mail adress' 
+                      type="email"
+                      value={confirmEmail}
+                      onChange={({target}) => setConfirmEmail(target.value)}
+                      required
+                    />
+                </label>
+                {error && <p className='error'>{error}</p>}
                 
                 <button className='button' type='submit'>Confirm</button>
             </form>

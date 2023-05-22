@@ -35,8 +35,11 @@ export const ItemDetailContainer = () => {
   
   return (
     <div className='itemDetailContainer'>
-        <Loader loading={loading} />
-        <ItemDetail {...product}   />
+        {loading ? (
+        <Loader />
+      ) : (
+        product && <ItemDetail {...product} />
+      )}
     </div>
   )
 }

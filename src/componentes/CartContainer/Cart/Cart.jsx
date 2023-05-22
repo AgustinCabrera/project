@@ -27,7 +27,11 @@ export const Cart = () => {
             <div className='cart-style'>
                 <div className='cart-items-style horizontal-cart'>
                 <div className='cartItemList'>
-                  <CartItem />
+                  {
+                    cart.map((item) =>(
+                        <CartItem key={item.id} item={item}/>)
+                    )                        
+                  }
                 </div>
                 <h3 className='cart-title'>Total: ${totalPrice}</h3>
                 <button className='button-cart' onClick={clearCart}>Clear cart</button>

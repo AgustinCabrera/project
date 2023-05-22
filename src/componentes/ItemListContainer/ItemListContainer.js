@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import  ItemList  from '../ItemList/ItemList'
 import {getDocs,collection,query,where} from 'firebase/firestore'
 import {db} from '../../services/firebase/firebaseConfig'
+import { Loader } from '../Loader/Loader'
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -33,11 +34,14 @@ const ItemListContainer = ({ greeting }) => {
       })
     },[categoryId])
     
-// TO DO: CONFIGURAR EL RETURN 
   return (
     <div className='itemListContainer'>
       <p className='greeting'>{greeting}</p>
-      <ItemList products={products} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <ItemList products={products} />
+      )}
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { CartContext } from '../../assets/context/CartContext'
 import { Link } from 'react-router-dom'
 import { Badge } from 'react-bootstrap' 
+import './CartWidget.css'
 
 export const CartWidget = () => {
     const {totalQuantity} = useContext(CartContext)
@@ -11,8 +12,8 @@ export const CartWidget = () => {
     <Link to = '/cart' className ='CarWidget' >
         <div class="icon-container">
            <svg xmlns="http://www.w3.org/2000/svg" 
-           width="32" 
-           height="32" 
+           width="50" 
+           height="40" 
            fill="currentColor" 
            class="bi bi-bag" 
            viewBox="0 0 16 16" 
