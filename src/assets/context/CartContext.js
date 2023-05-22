@@ -8,12 +8,12 @@ export const CartProvider = ({ children }) => {
     const [cart,setCart] = useState([])
 
 
-    const addItem = (item,count) => {
+    const addItem = (item,quantity) => {
         if(!isInCart(item.id)) {
-            setCart(prev => [...prev,{...item,count}])
+            setCart(prev => [...prev,{...item,quantity}])
         } else {
             const updatedCart = cart.map((prod) =>
-              prod.id === item.id ? { ...prod, count: prod.count + count } : prod
+              prod.id === item.id ? { ...prod, quantity: prod.quantity + quantity } : prod
             );
             setCart(updatedCart);
           }
@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
 
      const calculateTotalPrice = (cart) => {
         return cart
-        .reduce((acc,prod) => acc + prod.price * prod.count,0)
+        .reduce((acc,prod) => acc + prod.price * prod.quantity,0)
         
     }
 

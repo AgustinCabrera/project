@@ -18,7 +18,6 @@ export const ItemDetail = ( props ) => {
             name: props.name,
             price: props.price,
             img: props.img,
-            quantity: quantity
         }
         addItem(item,quantity)
     }
