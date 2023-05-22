@@ -37,7 +37,7 @@ export const Cart = () => {
                 </div>
         </div>
         <div className='buttons-styles'>
-            <button className='button-cart' onClick={ clearCart}>Clear cart</button>
+            <div className='button-cart' onClick={ clearCart}>Clear cart</div>
             <Link to = '/checkout' className ='button-cart' style={{ textDecoration: 'none' }} >Checkout </Link>
         </div>
 
